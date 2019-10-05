@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Container, Form, Button } from 'react-bootstrap';
 import AddressBookList from './AddressBookList/AddressBookList';
+import Dialog from './Dialog/Dialog';
 import { generate } from 'randomstring';
 
 function App() {
@@ -49,12 +50,39 @@ function App() {
       Telephone: "200-707-8670"
     }
   ]);
+  const [selectedKey, setSelectedKey] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
+
+  const closeDialogHandler = () => {
+    setShowDialog(false);
+  }
+
+  const showDialogHandler = (key) => {
+    setSelectedKey(key);
+    setShowDialog(true);
+  }
+
+  const deleteItemHandler = () => {
+    const newAddressBook = [...addressBook];
+    const index = newAddressBook.findIndex(item => item.key === selectedKey);
+    newAddressBook.splice(index, 1);
+    setAddressBook(newAddressBook);
+    closeDialogHandler();
+  }
 
   return (
     <div className="App">
       <Container>
+        <Dialog
+          show={showDialog}
+          onHide={closeDialogHandler}
+          confirmAction={deleteItemHandler}
+          rejectAction={closeDialogHandler}
+          title="Warning"
+          message="Are you sure you want to delete this?"
+        />
         <h1 className="text-left">React Address Book</h1>
-        <AddressBookList addressBook={addressBook} />
+        <AddressBookList addressBook={addressBook} onDelete={showDialogHandler} />
         <h1 className="text-left">Add New</h1>
         <Form className="text-left">
           <Form.Group controlId="formBasicEmail">
