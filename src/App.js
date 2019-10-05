@@ -70,6 +70,18 @@ function App() {
     closeDialogHandler();
   }
 
+  const addItemHandler = (event) => {
+    event.preventDefault();
+    const newItem = {
+      key: generate(10),
+      FirstName: event.target.firstName.value,
+      LastName: event.target.lastName.value,
+      Birthday: event.target.birthday.value,
+      Telephone: event.target.telephone.value
+    }
+    setAddressBook([...addressBook, newItem]);
+  }
+
   return (
     <div className="App">
       <Container>
@@ -84,24 +96,30 @@ function App() {
         <h1 className="text-left">React Address Book</h1>
         <AddressBookList addressBook={addressBook} onDelete={showDialogHandler} />
         <h1 className="text-left">Add New</h1>
-        <Form className="text-left">
-          <Form.Group controlId="formBasicEmail">
+        <Form className="text-left" onSubmit={addItemHandler}>
+          <Form.Group controlId="firstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control 
-              type="text" 
-              placeholder="Enter first name" />
+            type="text" 
+            placeholder="Enter first name" />
+          </Form.Group>
+          <Form.Group controlId="lastName">
             <Form.Label>Last Name</Form.Label>
             <Form.Control 
-              type="text" 
-              placeholder="Enter last name" />
+            type="text" 
+            placeholder="Enter last name" />
+          </Form.Group>
+          <Form.Group controlId="birthday">
             <Form.Label>Birthday</Form.Label>
             <Form.Control 
-              type="text" 
-              placeholder="Enter birthday" />
+            type="text" 
+            placeholder="Enter birthday" />
+          </Form.Group>
+          <Form.Group controlId="telephone">
             <Form.Label>Telephone</Form.Label>
             <Form.Control 
-              type="text" 
-              placeholder="Enter telephone" />
+            type="text" 
+            placeholder="Enter telephone" />
           </Form.Group>
           <Button type="submit" variant="primary">
             Submit
