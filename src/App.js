@@ -52,6 +52,7 @@ function App() {
   ]);
   const [selectedKey, setSelectedKey] = useState('');
   const [showDialog, setShowDialog] = useState(false);
+  const [searchResults, setSearchResults] = useState(null);
 
   const closeDialogHandler = () => {
     setShowDialog(false);
@@ -82,6 +83,19 @@ function App() {
     setAddressBook([...addressBook, newItem]);
   }
 
+  const searchHandler = (event) => {
+    const keyWord = event.target.value;
+    if (keyWord) {
+      const filtered = [...addressBook].filter(item => {
+        return item.FirstName.toLowerCase().includes(keyWord) || item.LastName.toLowerCase().includes(keyWord)
+        || item.Birthday.toLowerCase().includes(keyWord) || item.Telephone.includes(keyWord);
+      })
+      setSearchResults(filtered);
+    } else {
+      setSearchResults(null);
+    }
+  }
+
   return (
     <div className="App">
       <Container>
@@ -94,7 +108,15 @@ function App() {
           message="Are you sure you want to delete this?"
         />
         <h1 className="text-left">React Address Book</h1>
-        <AddressBookList addressBook={addressBook} onDelete={showDialogHandler} />
+        <div className="text-right">
+          <input
+            type="text" 
+            placeholder="Search here"
+            id="searchKeyWord"
+            onChange={searchHandler} 
+          />
+        </div>
+        {<AddressBookList addressBook={searchResults || addressBook} onDelete={showDialogHandler} />}
         <h1 className="text-left">Add New</h1>
         <Form className="text-left" onSubmit={addItemHandler}>
           <Form.Group controlId="firstName">
