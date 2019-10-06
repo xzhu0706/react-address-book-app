@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-address-book-app/static/css/main.1779617f.chunk.css",
+    "main.js": "/react-address-book-app/static/js/main.95312420.chunk.js",
+    "main.js.map": "/react-address-book-app/static/js/main.95312420.chunk.js.map",
+    "runtime-main.js": "/react-address-book-app/static/js/runtime-main.3fbc6a2d.js",
+    "runtime-main.js.map": "/react-address-book-app/static/js/runtime-main.3fbc6a2d.js.map",
+    "static/css/2.510409cd.chunk.css": "/react-address-book-app/static/css/2.510409cd.chunk.css",
+    "static/js/2.168f5366.chunk.js": "/react-address-book-app/static/js/2.168f5366.chunk.js",
+    "static/js/2.168f5366.chunk.js.map": "/react-address-book-app/static/js/2.168f5366.chunk.js.map",
+    "index.html": "/react-address-book-app/index.html",
+    "precache-manifest.90b1261fab67a94dfbc85e61b8ce96f6.js": "/react-address-book-app/precache-manifest.90b1261fab67a94dfbc85e61b8ce96f6.js",
+    "service-worker.js": "/react-address-book-app/service-worker.js",
+    "static/css/2.510409cd.chunk.css.map": "/react-address-book-app/static/css/2.510409cd.chunk.css.map",
+    "static/css/main.1779617f.chunk.css.map": "/react-address-book-app/static/css/main.1779617f.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fbc6a2d.js",
+    "static/css/2.510409cd.chunk.css",
+    "static/js/2.168f5366.chunk.js",
+    "static/css/main.1779617f.chunk.css",
+    "static/js/main.95312420.chunk.js"
+  ]
+}
